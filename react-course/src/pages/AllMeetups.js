@@ -8,6 +8,7 @@ function AllMeetupsPage() {
 
   // no external dependencies present
   useEffect(() => {
+    setIsLoading(true);
     fetch(
       "https://react-getting-started-b7c26-default-rtdb.firebaseio.com/meetups.json"
     )
