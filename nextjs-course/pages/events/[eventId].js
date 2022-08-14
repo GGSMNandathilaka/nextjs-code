@@ -14,9 +14,9 @@ function SelectedEventPage(props) {
 
   if (!event) {
     return (
-      <ErrorAlert>
-        <p>Event Not Found !!!</p>
-      </ErrorAlert>
+      <div className="center">
+        <p>Loading...</p>
+      </div>
     );
   }
 
@@ -48,10 +48,10 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const allEvents = await getAllEvents();
+  const allEvents = await getFeaturedEvents();
   const paths = allEvents.map((e) => ({ params: { eventId: e.id } }));
 
-  return { paths: paths, fallback: false };
+  return { paths: paths, fallback: "blocking" };
 }
 
 export default SelectedEventPage;
